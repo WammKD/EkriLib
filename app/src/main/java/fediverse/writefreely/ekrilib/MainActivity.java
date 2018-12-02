@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.EditText;
+import fediverse.writefreely.ekrilib.util.MarkdownUtil;
 import ru.noties.markwon.Markwon;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 		                                           	@Override
 		                                           	public void onClick(View view) {
 		                                           		et.setText(Markwon.markdown(MainActivity.this,
-		                                           		                            et.getText().toString()));
+		                                           		                            MarkdownUtil.conserveMarkdown(et.getText().toString())));
 		                                           	}
 		                                           });
 	}
