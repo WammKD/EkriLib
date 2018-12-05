@@ -1,0 +1,71 @@
+<!DOCTYPE module PUBLIC
+          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+          "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+	<module name="FileTabCharacter" />
+
+	<module name="SuppressWarningsFilter" />
+
+	<module name="TreeWalker">
+		<module name="AvoidStarImport" />
+
+		<module name="EqualsAvoidNull" />
+
+		<module name="FinalLocalVariable">
+			<property name="validateEnhancedForLoopVariable" value="true"                       />
+			<property name="tokens"                          value="VARIABLE_DEF,PARAMETER_DEF" />
+		</module>
+
+		<module name="GenericWhitespace" />
+
+		<module name="HiddenField" />
+
+		<module name="IllegalImport" />
+
+		<module name="NoLineWrap" />
+
+		<module name="NoWhitespaceAfter">
+			<property name="tokens"          value="ARRAY_DECLARATOR,AT,BNOT,DEC,DOT,INC,INDEX_OP,LITERAL_SYNCHRONIZED,LNOT,METHOD_REF,UNARY_MINUS,UNARY_PLUS" />
+			<property name="allowLineBreaks" value="false" />
+		</module>
+
+		<module name="NoWhitespaceBefore">
+			<property name="tokens"          value="COMMA,ELLIPSIS,METHOD_REF,POST_INC,POST_DEC,SEMI" />
+			<property name="allowLineBreaks" value="false" />
+		</module>
+		<module name="NoWhitespaceBefore">
+			<property name="tokens"          value="DOT"  />
+			<property name="allowLineBreaks" value="true" />
+		</module>
+
+		<module name="OperatorWrap">
+			<property name="option" value="eol" />
+			<property name="tokens" value="QUESTION,COLON,EQUAL,NOT_EQUAL,DIV,PLUS,MINUS,STAR,MOD,SR,BSR,GE,GT,SL,LE,LT,BXOR,BOR,LOR,BAND,LAND,LITERAL_INSTANCEOF,TYPE_EXTENSION_AND,ASSIGN,DIV_ASSIGN,PLUS_ASSIGN,MINUS_ASSIGN,STAR_ASSIGN,MOD_ASSIGN,SR_ASSIGN,BSR_ASSIGN,SL_ASSIGN,BXOR_ASSIGN,BOR_ASSIGN,BAND_ASSIGN,METHOD_REF" />
+		</module>
+
+		<module name="ParenPad" />
+
+		<module name="RedundantImport" />
+
+		<module name="RequireThis">
+			<property name="checkMethods"            value="false" />
+			<property name="validateOnlyOverlapping" value="false" />
+		</module>
+
+		<module name="StringLiteralEquality" />
+
+		<module name="SuppressWarningsHolder" />
+
+		<module name="TypecastParenPad" />
+
+		<module name="WhitespaceAfter">
+			<property name="tokens" value="COMMA,SEMI,TYPECAST" />
+		</module>
+
+		<module name="WhitespaceAround">
+			<property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAMBDA,LAND,LCURLY,LE,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_RETURN,LITERAL_TRY,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,TYPE_EXTENSION_AND" />
+		</module>
+
+		<module name="UnusedImports" />
+	</module>
+</module>
