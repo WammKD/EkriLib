@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,52 +35,56 @@ public class LoginActivity extends AppCompatActivity {
 
 		attempts.setText("" + attemptCounter);
 
-		loginBtn.setOnClickListener(new OnClickListener() {
-		                            	@Override
-		                            	public void onClick(View v) {
-		                            		if(username.getText().toString().equals("user") &&
-		                            		   password.getText().toString().equals("pass")) {
-		                            			Toast.makeText(LoginActivity.this,
-		                            			               "User and Password is correct",
-		                            			               Toast.LENGTH_SHORT).show();
-
-		                            			startActivity(new Intent(LoginActivity.this,
-		                            			                         MainActivity.class));
-		                            		} else {
-		                            			Toast.makeText(LoginActivity.this,
-		                            			               "User and Password is not correct",
-		                            			               Toast.LENGTH_SHORT).show();
-
-		                            			attemptCounter--;
-		                            			attempts.setText(Integer.toString(attemptCounter));
-
-		                            			if(attemptCounter == 0) {
-		                            				loginBtn.setEnabled(false);
-		                            			}
-		                            		}
-		                            	}
-		                            });
+		loginBtn.setOnClickListener((final View v) -> new MyTask().execute(username.getText().toString(),
+		                                                                   password.getText().toString()));
 	}
 
-	private class MyTask extends AsyncTask<Void, Void, String> {
+	private class MyTask extends AsyncTask<String, Void, Boolean> {
 		@Override
-		protected String doInBackground(Void... params) {
+		protected void onPreExecute() {
+			loginBtn.setEnabled(false);
+
+			Toast.makeText(LoginActivity.this,
+			               "Attempting login…",
+			               Toast.LENGTH_SHORT);
+		}
+
+		@Override
+		protected Boolean doInBackground(String... params) {
 			try {
 				wf = new WriteFreelyAPIwithUser("https://gospel.sunbutt.faith/",
-				                                "redacted",
-				                                "redacted");
+				                                params[0],
+				                                params[1]);
 
-				return "Logged into WriteFreely!";
-			} catch(final IOException e) {
-				return "FUCK";
+				return true;
+			} catch(final Exception e) {
+				return false;
 			}
 		}
 
 		@Override
-		protected void onPostExecute(final String result) {
-			Toast.makeText(LoginActivity.this,
-			               result,
-			               Toast.LENGTH_SHORT).show();
+		protected void onPostExecute(final Boolean wasSuccessful) {
+			loginBtn.setEnabled(true);
+
+			if(wasSuccessful) {
+				Toast.makeText(LoginActivity.this,
+				               "User and Password is correct",
+				               Toast.LENGTH_SHORT).show();
+
+				startActivity(new Intent(LoginActivity.this,
+				                         MainActivity.class));
+			} else {
+				Toast.makeText(LoginActivity.this,
+				               "User and Password is not correct",
+				               Toast.LENGTH_SHORT).show();
+
+				attemptCounter--;
+				attempts.setText(Integer.toString(attemptCounter));
+
+				if(attemptCounter == 0) {
+					loginBtn.setEnabled(false);
+				}
+			}
 		}
 	}
 }
