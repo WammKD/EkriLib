@@ -1,22 +1,28 @@
 package fediverse.writefreely.ekrilib;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View.OnClickListener;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
+import fediverse.writefreely.api.WriteFreelyAPIwithUser;
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
-	private int attemptCounter = 5;
+	private int                    attemptCounter = 5;
+	private WriteFreelyAPIwithUser             wf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
+
+		new MyTask().execute();
 
 		LoginButton();
 	}
@@ -54,5 +60,27 @@ public class LoginActivity extends AppCompatActivity {
 		                            		}
 		                            	}
 		                            });
+	}
+
+	private class MyTask extends AsyncTask<Void, Void, String> {
+		@Override
+		protected String doInBackground(Void... params) {
+			try {
+				wf = new WriteFreelyAPIwithUser("https://gospel.sunbutt.faith/",
+				                                "redacted",
+				                                "redacted");
+
+				return "Logged into WriteFreely!";
+			} catch(final IOException e) {
+				return "FUCK";
+			}
+		}
+
+		@Override
+		protected void onPostExecute(final String result) {
+			Toast.makeText(LoginActivity.this,
+			               result,
+			               Toast.LENGTH_SHORT).show();
+		}
 	}
 }
