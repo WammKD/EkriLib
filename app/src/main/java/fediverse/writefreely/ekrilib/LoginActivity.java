@@ -14,6 +14,8 @@ import fediverse.writefreely.api.WriteFreelyAPIwithUser;
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
+	private TextView                     attempts;
+	private Button                       loginBtn;
 	private int                    attemptCounter = 5;
 	private WriteFreelyAPIwithUser             wf;
 
@@ -22,7 +24,8 @@ public class LoginActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
 
-		new MyTask().execute();
+		attempts = (TextView) super.findViewById(R.id.textView_attempt_Count);
+		loginBtn = (Button)   super.findViewById(R.id.button_login);
 
 		LoginButton();
 	}
@@ -30,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 	private void LoginButton() {
 		final EditText username = (EditText) super.findViewById(R.id.editText_user);
 		final EditText password = (EditText) super.findViewById(R.id.editText_password);
-		final TextView attempts = (TextView) super.findViewById(R.id.textView_attempt_Count);
-		final Button   loginBtn = (Button)   super.findViewById(R.id.button_login);
 
 		attempts.setText("" + attemptCounter);
 
