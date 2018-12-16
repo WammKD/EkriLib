@@ -13,10 +13,10 @@ import fediverse.writefreely.api.WriteFreelyAPIwithUser;
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
-	private TextView                     attempts;
-	private Button                       loginBtn;
-	private int                    attemptCounter = 5;
-	private WriteFreelyAPIwithUser             wf;
+	protected static WriteFreelyAPIwithUser             wf;
+	private          TextView                     attempts;
+	private          Button                       loginBtn;
+	private          int                    attemptCounter = 5;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			try {
-				wf = new WriteFreelyAPIwithUser("https://gospel.sunbutt.faith/",
-				                                params[0],
-				                                params[1]);
+				LoginActivity.wf = new WriteFreelyAPIwithUser("https://gospel.sunbutt.faith/",
+				                                              params[0],
+				                                              params[1]);
 
 				return true;
 			} catch(final Exception e) {
