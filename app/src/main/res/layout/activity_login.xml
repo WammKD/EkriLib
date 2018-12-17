@@ -39,6 +39,7 @@
 	          android:id="@+id/editText_user"
 	          android:layout_below="@id/textView_username"
 	          android:layout_alignLeft="@id/textView_username"
+	          android:layout_marginRight="20dp"
 	          android:layout_alignParentEnd="true"             />
 
 	<TextView android:layout_width="wrap_content"
@@ -68,6 +69,7 @@
 	          android:layout_below="@id/textView_instance"
 	          android:layout_alignLeft="@id/editText_user"
 	          android:layout_alignStart="@id/editText_user"
+	          android:layout_marginRight="20dp"
 	          android:layout_alignParentEnd="true"          />
 
 	<TextView android:layout_width="wrap_content"
@@ -97,6 +99,7 @@
 	          android:layout_below="@id/textView_password"
 	          android:layout_alignLeft="@id/editText_user"
 	          android:layout_alignStart="@id/editText_user"
+	          android:layout_marginRight="20dp"
 	          android:layout_alignParentEnd="true"          />
 
 	<Button android:layout_width="100dp"
