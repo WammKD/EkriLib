@@ -13,30 +13,19 @@ import fediverse.writefreely.api.WriteFreelyAPIwithUser;
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
-	protected static WriteFreelyAPIwithUser             wf;
-	private          TextView                     attempts;
-	private          Button                       loginBtn;
-	private          int                    attemptCounter = 5;
+	protected static WriteFreelyAPIwithUser       wf;
+	private          Button                 loginBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
 
-		attempts = (TextView) super.findViewById(R.id.textView_attempt_Count);
 		loginBtn = (Button)   super.findViewById(R.id.button_login);
 
-		LoginButton();
-	}
 
-	private void LoginButton() {
-		final EditText username = (EditText) super.findViewById(R.id.editText_user);
-		final EditText password = (EditText) super.findViewById(R.id.editText_password);
 
-		attempts.setText("" + attemptCounter);
 
-		loginBtn.setOnClickListener((final View v) -> new MyTask().execute(username.getText().toString(),
-		                                                                   password.getText().toString()));
 	}
 
 	private class MyTask extends AsyncTask<String, Void, Boolean> {
@@ -78,13 +67,6 @@ public class LoginActivity extends AppCompatActivity {
 				Toast.makeText(LoginActivity.this,
 				               "User and Password is not correct",
 				               Toast.LENGTH_SHORT).show();
-
-				attemptCounter--;
-				attempts.setText(Integer.toString(attemptCounter));
-
-				if(attemptCounter == 0) {
-					loginBtn.setEnabled(false);
-				}
 			}
 		}
 	}
