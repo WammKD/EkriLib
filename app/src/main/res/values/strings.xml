@@ -1,7 +1,9 @@
 <resources>
 	<string name="app_name">EkriLib</string>
-	<string name="login_text">Login Page</string>
-	<string name="usename_text">User Name</string>
+	<string name="login_text">EkriLib</string>
+	<string name="usename_text">Username</string>
+	<string name="instance_text">Server Instance</string>
+	<string name="example_text">@your-username@your-instance</string>
 	<string name="password_text">Password</string>
 	<string name="attempts_text">Attempts: </string>
 	<string name="button_login">Login</string>
