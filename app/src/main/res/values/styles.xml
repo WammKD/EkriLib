@@ -5,15 +5,15 @@
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
-		<item name="actionBarStyle">@style/MainActionBar</item>
+		<item name="actionBarStyle">@style/AppTheme.MainActionBar</item>
 	</style>
 
-	<style name="NoActionBar" parent="@style/AppTheme">
+	<style name="AppTheme.NoActionBar" parent="@style/AppTheme">
 		<item name="windowActionBar">false</item>
 		<item name="windowNoTitle">true</item>
 	</style>
 
-	<style name="MainActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+	<style name="AppTheme.MainActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
 		<item name="background">@color/colorPrimary</item>
 		<item name="android:textColor">@color/colorText</item>
 		<item name="elevation">0dp</item>
