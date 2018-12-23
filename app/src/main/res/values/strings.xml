@@ -7,4 +7,9 @@
 	<string name="password_text">Password</string>
 	<string name="attempts_text">Attempts: </string>
 	<string name="button_login">Login</string>
+
+	<string-array name="blogs_array">
+		<item>Draft</item>
+		<item>Example</item>
+	</string-array>
 </resources>

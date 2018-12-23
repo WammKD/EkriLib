@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 		markdownProcessor.live((MarkdownEditText) findViewById(R.id.plain_text_input));
 
 		super.setSupportActionBar(super.findViewById(R.id.main_toolbar));
+		super.getSupportActionBar().setDisplayShowTitleEnabled(false);
 	}
 
 	@Override

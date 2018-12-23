@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                tools:context=".MainActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/colorPrimary"
+                                             tools:context=".MainActivity">
+	<com.yydcdut.markdown.MarkdownEditText android:id="@+id/plain_text_input"
+	                                       android:layout_width="match_parent"
+	                                       android:layout_height="0dp"
+	                                       android:inputType="textMultiLine"
+	                                       app:layout_constraintLeft_toLeftOf="parent"
+	                                       app:layout_constraintRight_toRightOf="parent"
+	                                       app:layout_constraintTop_toTopOf="parent"
+	                                       app:layout_constraintBottom_toTopOf="@id/main_toolbar" />
+
 	<android.support.v7.widget.Toolbar android:id="@+id/main_toolbar"
 	                                   android:layout_width="match_parent"
 	                                   android:layout_height="?attr/actionBarSize"
+	                                   android:contentInsetLeft="0dp"
+	                                   android:contentInsetStart="5dp"
+	                                   app:contentInsetLeft="0dp"
+	                                   app:contentInsetStart="5dp"
 	                                   android:background="#FFFFFF"
 	                                   android:elevation="0dp"
 	                                   android:layout_alignParentBottom="true"
+	                                   app:layout_constraintBottom_toBottomOf="parent"
 	                                   android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-	                                   app:popupTheme="@style/ThemeOverlay.AppCompat.Light"    />
+	                                   app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+		<ImageButton android:id="@+id/action_search"
+		             android:src="@drawable/ic_blogs_dark"
+		             android:paddingTop="11dip"
+		             android:paddingBottom="11dip"
+		             android:layout_marginRight="7dp"
+		             android:background="?attr/actionBarItemBackground"
+		             android:layout_width="?attr/actionBarSize"
+		             android:layout_height="?attr/actionBarSize"
+		             android:scaleType="centerInside"
+		             android:layout_alignParentLeft="true"
+		             android:layout_alignParentTop="true"               />
 
-	<android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-	                                             android:layout_height="match_parent">
-		<Button android:id="@+id/butt"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        app:layout_constraintTop_toTopOf="parent"
-		        android:layout_centerHorizontal="true"
-		        android:text="UPDATE"                     />
-		<com.yydcdut.markdown.MarkdownEditText android:id="@+id/plain_text_input"
-		                                       android:layout_width="wrap_content"
-		                                       android:layout_height="wrap_content"
-		                                       android:inputType="textMultiLine"
-		                                       app:layout_constraintBottom_toBottomOf="parent"
-		                                       app:layout_constraintLeft_toLeftOf="parent"
-		                                       app:layout_constraintRight_toRightOf="parent"
-		                                       app:layout_constraintTop_toBottomOf="@id/butt"  />
-	</android.support.constraint.ConstraintLayout>
-</RelativeLayout>
+		<Spinner android:id="@+id/main_spinner_nav"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:entries="@array/blogs_array" />
+	</android.support.v7.widget.Toolbar>
+</android.support.constraint.ConstraintLayout>
