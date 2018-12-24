@@ -1,8 +1,10 @@
 package fediverse.writefreely.ekrilib;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.View;
 import com.yydcdut.markdown.MarkdownConfiguration.Builder;
 import com.yydcdut.markdown.MarkdownEditText;
 import com.yydcdut.markdown.MarkdownProcessor;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
 		super.setSupportActionBar(super.findViewById(R.id.main_toolbar));
 		super.getSupportActionBar().setDisplayShowTitleEnabled(false);
+		super.findViewById(R.id.main_view_blogs)
+		     .setOnClickListener((final View v) -> startActivity(new Intent(MainActivity.this,
+		                                                                    BlogsActivity.class)));
 	}
 
 	@Override
