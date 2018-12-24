@@ -48,8 +48,6 @@ public class BlogsActivity extends AppCompatActivity {
 	}
 
 	private static class CustomAdapter extends ArrayAdapter<Collection> implements OnClickListener {
-		private Collection[] dataSet;
-		        Context      mContext;
 
 		// View lookup cache
 		private static class ViewHolder {
@@ -59,15 +57,13 @@ public class BlogsActivity extends AppCompatActivity {
 
 		public CustomAdapter(final Collection[] data, final Context context) {
 			super(context, R.layout.row_item_blogs, data);
-			this.dataSet  = data;
-			this.mContext = context;
 		}
 
 		@Override
 		public void onClick(final View v) {
 			Collection dataModel = super.getItem((Integer) v.getTag());
 
-			Toast.makeText(mContext, "I clicked", Toast.LENGTH_SHORT);
+			Toast.makeText(super.getContext(), "I clicked", Toast.LENGTH_SHORT);
 		}
 
 		@Override
