@@ -10,6 +10,5 @@
 
 	<string-array name="blogs_array">
 		<item>Draft</item>
-		<item>Example</item>
 	</string-array>
 </resources>
